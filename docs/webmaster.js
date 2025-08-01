@@ -1,7 +1,9 @@
+
+//jvalue with no number will be the page my website is on so it is left still with no declaration as I will pull it from the button and not thinking about it yet, this is also a virtual simulator that will simulate page logic but without ever leaving the same html playground
+function loadPage(){
 let jid=0
 let jvalue=1
-//jvalue with no number will be the page my website is on so it is left still with no declaration as I will pull it from the button and not thinking about it yet, this is also a virtual simulator that will simulate page logic but without ever leaving the same html playground
-function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5){ 
+  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5){ 
   return `<form>
     <label>${jvalue1}</label><br>
     <img src="${jvalue2}"><br>
@@ -40,3 +42,4 @@ fetch("imgdata.json")
       jid+=3
     }
   });
+}
