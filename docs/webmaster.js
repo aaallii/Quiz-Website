@@ -42,4 +42,4 @@ fetch("imgdata.json")
       jid+=3
     }
   });
-}
+document.body.innerHTML = head}
