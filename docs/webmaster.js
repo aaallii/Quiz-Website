@@ -13,10 +13,26 @@ const template = (jvalue, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5) => `
     <label for="c${jvalue + 2}">${jvalue5}</label>
   </form>
 `;
+let head;
+let body;
+fetch("htmlwrapping.json")
+  .then(response => response.json())
+  .then(data => {
+    for (const key in data){
+      if(key='head'){
+        head=data[key];
+    }
+      if(key='body'){
+        body=data[key];
+    }
+      if(key="1" jvalue){
+        head=head+data[key];
+    }
+  }});
 fetch("imgdata.json")
   .then(response => response.json())
   .then(data => {
-    for (const key in data) {
-      
+    for (jvalue-1*3<const key in data<jvalue*3+1) {
+      template=
     }
   });
