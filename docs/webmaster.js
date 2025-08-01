@@ -19,30 +19,42 @@ function loadPage(){if(pjvalue!==jvalue){
     <label for="c${jid + 2}">${jvalue5}</label>
   </form>
 `};
-let head;
-let body;
+let head="";
+let body="";
 fetch("htmlwrapping.json")
   .then(response => response.json())
   .then(data => {
-    for (const key in data){
-      if(key==='head'){
-        head=data[key];
-    }
-      if(key==='body'){
-        body=data[key];
-    }
-      if(key==="1" && key===jvalue){
-        head=head+data[key];
-    }
-  }});
-fetch("imgdata.json")
+head = data["head"] || "";
+body = data["body"] || "";
+
+        // Optional page-specific head content
+        if (data[String(jvalue)]) {
+          head += data[String(jvalue)];
+        }
+
+        return fetch("imgdata.json");
+      })
+  
   .then(response => response.json())
   .then(data => {
-    for (let i = (jvalue - 1) * 3; i < jvalue * 3 + 1; i++) {
-      head=head+template(jid,data[key])
-      jid+=3
-    }
-  })};
+  for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++){
+    let pageData = data[String(i)];
+
+        if (Array.isArray(pageData) && pageData.length >= 5) {
+          body += template(
+            jid,
+            pageData[0], // label
+            pageData[1], // image src
+            pageData[2], // option A
+            pageData[3], // option B
+            pageData[4]  // option C
+          );
+          jid += 3;
+        } else {
+          body += `<p>No data found for page ${jvalue}.</p>`;
+        }};
+document.body.innerHTML = body
+pjvalue=jvalue})};
 if (pjvalue===jvalue){console.log("false positive")}
-document.body.innerHTML = head
-pjvalue=jvalue}
+};
+
