@@ -1,1 +1,17 @@
-
+{<head>
+    <title>Quiz</title>
+    <style>
+      form {
+        display: inline-block; 
+            box-sizing: border-box;
+            max-height: 70vh;
+            max-width: 60vh;
+        }
+      button{
+            display: inline-block; 
+            box-sizing: border-box;
+            margin: 30px; 
+            bottom: 0; 
+            right: 0;
+        }
+      </style></head>}
