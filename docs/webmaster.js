@@ -3,8 +3,13 @@
 let jid=0
 let pjvalue=0
 let jvalue=1
-function loadPage(){if(pjvalue!==jvalue){
-  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5){ 
+function loadPage(){
+let start=0
+fetch ("imgdata.json")
+.then(response => response.json())
+.then(data=>{if(pjvalue!==jvalue&&(data[String((jvalue - 1)*3+1)])){loadPageb}})}
+function loadPageb{  
+function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5){ 
   return `<form>
     <label>${jvalue1}</label><br>
     <img src="${jvalue2}"><br>
@@ -57,5 +62,5 @@ fetch("htmlwrappings.json")
     document.body.innerHTML = preContent + mainContent + postContent;
     pjvalue = jvalue;
   })
-}if (pjvalue===jvalue){console.log("false positive")}};
+if (pjvalue===jvalue){console.log("false positive")}};
 loadPage()
