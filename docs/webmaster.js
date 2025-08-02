@@ -21,7 +21,7 @@ function loadPage(){if(pjvalue!==jvalue){
 `};
 let head="";
 let body="";
-fetch("htmlwrapping.json")
+fetch("htmlwrappings.json")
   .then(response => response.json())
   .then(data => {
 head = data["head"] || "";
