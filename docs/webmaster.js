@@ -98,5 +98,6 @@ function Score(id,where){
   for (let i = 0; i < scores.length; i++){
   totals+=i
 }
+  console.log(totals);
 }
 loadPage();
