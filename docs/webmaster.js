@@ -17,18 +17,18 @@ function loadPage() {
 }
 
 function loadPageb() {
-  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5) {
+  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5,nameNum) {
     return `<form>
       <label>${jvalue1}</label><br>
       <img src="${jvalue2}"><br>
 
-      <input type="checkbox" id="c${jid}" value="1">
+      <input type="radio" id="c${jid}" name="d${nameNum}" value="3">
       <label for="c${jid}">${jvalue3}</label><br>
 
-      <input type="checkbox" id="c${jid + 1}" value="3">
+      <input type="radio" id="c${jid + 1}" name="d${nameNum}" value="1">
       <label for="c${jid + 1}">${jvalue4}</label><br>
 
-      <input type="checkbox" id="c${jid + 2}" value="-1">
+      <input type="radio" id="c${jid + 2}" name="d${nameNum}" value="-1">
       <label for="c${jid + 2}">${jvalue5}</label>
     </form>`;
   }
@@ -61,7 +61,8 @@ function loadPageb() {
             pageData[1],
             pageData[2],
             pageData[3],
-            pageData[4]
+            pageData[4],
+            i
           );
           jid += 3;
         } else {
