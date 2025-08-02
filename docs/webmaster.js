@@ -19,42 +19,43 @@ function loadPage(){if(pjvalue!==jvalue){
     <label for="c${jid + 2}">${jvalue5}</label>
   </form>
 `};
-let head="";
-let body="";
+let preContent = "";  // formerly head
+let postContent = ""; // formerly body
+let mainContent = ""; // where form/questions go
 fetch("htmlwrappings.json")
   .then(response => response.json())
   .then(data => {
-head = data["head"] || "";
-body = data["body"] || "";
+    preContent = data["head"] || "";
+    postContent = data["body"] || "";
 
-        // Optional page-specific head content
-        if (data[String(jvalue)]) {
-          head += data[String(jvalue)];
-        }
+    if (data[String(jvalue)]) {
+      preContent += data[String(jvalue)];
+    }
 
-        return fetch("imgdata.json");
-      })
-  
+    return fetch("imgdata.json");
+  })
   .then(response => response.json())
   .then(data => {
-  for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++){
-    let pageData = data[String(i)];
+    for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++) {
+      const pageData = data[String(i)];
 
-        if (Array.isArray(pageData) && pageData.length >= 5) {
-          head += template(
-            jid,
-            pageData[0], // label
-            pageData[1], // image src
-            pageData[2], // option A
-            pageData[3], // option B
-            pageData[4]  // option C
-          );
-          jid += 3;
-        } else {
-          head += `<p>No data found for page ${jvalue}.</p>`;
-        }};
-document.body.innerHTML = head+body;
-pjvalue=jvalue})};
-if (pjvalue===jvalue){console.log("false positive")}
-};
+      if (Array.isArray(pageData) && pageData.length >= 5) {
+        mainContent += template(
+          jid,
+          pageData[0],
+          pageData[1],
+          pageData[2],
+          pageData[3],
+          pageData[4]
+        );
+        jid += 3;
+      } else {
+        mainContent += `<p>No data found for page ${jvalue}.</p>`;
+      }
+    }
+
+    document.body.innerHTML = preContent + mainContent + postContent;
+    pjvalue = jvalue;
+  })
+}if (pjvalue===jvalue){console.log("false positive")}};
 loadPage()
