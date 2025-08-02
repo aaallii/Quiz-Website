@@ -101,3 +101,4 @@ function Score(name,where){
   console.log(totals);
 }
 loadPage();
+//load please
