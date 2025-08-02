@@ -18,7 +18,7 @@ function loadPage() {
 
 function loadPageb() {
   function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5,nameNum) {
-    return `<form id="b${nameNum}" onchange="Score('b${nameNum}',${nameNum})">
+    return `<form id="b${nameNum}" onchange="Score('d${nameNum}',${nameNum})">
       <label>${jvalue1}</label><br>
       <img src="${jvalue2}"><br>
 
@@ -76,8 +76,8 @@ function loadPageb() {
 }
 let scores=[0,0,0,0,0,0,0,0,0,0,0,0,0]
 let totals=0
-function Score(id,where){
-  const radios = document.getElementById(id);
+function Score(name,where){
+  const radios = document.getElementsByName(name);
   let selectedValue = 0;
   
   for (const radio of radios) {
