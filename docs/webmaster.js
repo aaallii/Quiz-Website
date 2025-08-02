@@ -57,4 +57,4 @@ document.body.innerHTML = body
 pjvalue=jvalue})};
 if (pjvalue===jvalue){console.log("false positive")}
 };
-
+loadPage()
