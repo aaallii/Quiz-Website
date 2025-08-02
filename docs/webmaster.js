@@ -82,7 +82,7 @@ function Score(id,where){
   
   for (const radio of radios) {
     if (radio.checked) {
-      selectedValue = parseInt(radio.value);
+      selectedValue = parseInt(radio.value, 10);
       break;
     }
   }
@@ -96,7 +96,7 @@ function Score(id,where){
   }
   totals=0
   for (let i = 0; i < scores.length; i++){
-  totals+=i
+  totals+=parseInt(i);
 }
   console.log(totals);
 }
