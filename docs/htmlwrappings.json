@@ -1,1 +1,3 @@
-
+{"1":"<h1>This is an abstract relationship quiz</h1> <p style="top:0;">where you will see how well you can guess answers based on loose ends, try it out</p><script src="webmaster.js" defer></script>"
+"head":"<body>"
+"body":"<button onclick="jvalue += 1; loadPage();">Next page</button><button onclick="jvalue -= 1; loadPage();" style="left:0;">The page before</button></body></html>"}
