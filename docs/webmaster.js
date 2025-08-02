@@ -18,7 +18,7 @@ function loadPage() {
 
 function loadPageb() {
   function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5,nameNum) {
-    return `<form>
+    return `<form id="b${nameNum}" onchange="Score('b${nameNum}',${nameNum})">
       <label>${jvalue1}</label><br>
       <img src="${jvalue2}"><br>
 
@@ -74,5 +74,29 @@ function loadPageb() {
       pjvalue = jvalue;
     });
 }
+let scores=[0,0,0,0,0,0,0,0,0,0,0,0,0]
+let totals=0
+function Score(id,where){
+    const radios = document.getElementsByName(id);
+  let selectedValue = 0;
+  
+  for (const radio of radios) {
+    if (radio.checked) {
+      selectedValue = parseInt(radio.value);
+      break;
+    }
+  }
 
+  if (selectedValue !== null) {
+    console.log("Selected value: " + selectedValue);
+    scores[where]= selectedValue;
+  } else {
+    console.log("No option selected.");
+    scores[where]=0;
+  }
+  totals=0
+  for (let i = 0; i < scores.length; i++){
+  totals+=i
+}
+}
 loadPage();
