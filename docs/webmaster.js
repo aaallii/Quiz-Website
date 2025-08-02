@@ -41,7 +41,7 @@ body = data["body"] || "";
     let pageData = data[String(i)];
 
         if (Array.isArray(pageData) && pageData.length >= 5) {
-          body += template(
+          head += template(
             jid,
             pageData[0], // label
             pageData[1], // image src
@@ -51,9 +51,9 @@ body = data["body"] || "";
           );
           jid += 3;
         } else {
-          body += `<p>No data found for page ${jvalue}.</p>`;
+          head += `<p>No data found for page ${jvalue}.</p>`;
         }};
-document.body.innerHTML = body
+document.body.innerHTML = head+body;
 pjvalue=jvalue})};
 if (pjvalue===jvalue){console.log("false positive")}
 };
