@@ -17,21 +17,33 @@ function loadPage() {
 }
 
 function loadPageb() {
-  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5,nameNum) {
-    return `<form id="b${nameNum}" onchange="Score('d${nameNum}',${nameNum})">
-      <label>${jvalue1}</label><br>
-      <img src="${jvalue2}"><br>
+  function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5, nameNum) {
+  let firststring = `<form id="b${nameNum}" onchange="Score('d${nameNum}',${nameNum})">
+    <label>${jvalue1}</label><br>
+    <img src="${jvalue2}"><br>`;
 
-      <input type="radio" id="c${jid}" name="d${nameNum}" value="3">
-      <label for="c${jid}">${jvalue3}</label><br>
+  let laststring = `</form>`;
 
-      <input type="radio" id="c${jid + 1}" name="d${nameNum}" value="1">
-      <label for="c${jid + 1}">${jvalue4}</label><br>
+  let string1 = `<input type="radio" id="c${jid}" name="d${nameNum}" value="3">
+    <label for="c${jid}">${jvalue3}</label><br>`;
 
-      <input type="radio" id="c${jid + 2}" name="d${nameNum}" value="-1">
-      <label for="c${jid + 2}">${jvalue5}</label>
-    </form>`;
+  let string2 = `<input type="radio" id="c${jid + 1}" name="d${nameNum}" value="1">
+    <label for="c${jid + 1}">${jvalue4}</label><br>`;
+
+  let string3 = `<input type="radio" id="c${jid + 2}" name="d${nameNum}" value="-1">
+    <label for="c${jid + 2}">${jvalue5}</label>`;
+
+  let options = [string1, string2, string3];
+
+  // Shuffle the array randomly
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
   }
+
+  let fullForm = firststring + options.join('') + laststring;
+  return fullForm;
+};
 
   let preContent = "";  // Formerly head
   let postContent = ""; // Formerly body
