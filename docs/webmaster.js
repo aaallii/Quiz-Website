@@ -25,10 +25,10 @@ function loadPageb() {
   let laststring = `</form>`;
 
   let string1 = `<input type="radio" id="c${jid}" name="d${nameNum}" value="3">
-    <label for="c${jid}">${jvalue3}</label><br>`;
+    <label for="c${jid}">${jvalue3}</label>`;
 
   let string2 = `<input type="radio" id="c${jid + 1}" name="d${nameNum}" value="1">
-    <label for="c${jid + 1}">${jvalue4}</label><br>`;
+    <label for="c${jid + 1}">${jvalue4}</label>`;
 
   let string3 = `<input type="radio" id="c${jid + 2}" name="d${nameNum}" value="-1">
     <label for="c${jid + 2}">${jvalue5}</label>`;
