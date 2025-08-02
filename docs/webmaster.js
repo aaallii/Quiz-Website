@@ -77,7 +77,7 @@ function loadPageb() {
 let scores=[0,0,0,0,0,0,0,0,0,0,0,0,0]
 let totals=0
 function Score(id,where){
-    const radios = document.getElementsByName(id);
+  const radios = document.getElementById(id);
   let selectedValue = 0;
   
   for (const radio of radios) {
@@ -87,7 +87,7 @@ function Score(id,where){
     }
   }
 
-  if (selectedValue !== null) {
+  if (selectedValue !== 0) {
     console.log("Selected value: " + selectedValue);
     scores[where]= selectedValue;
   } else {
@@ -96,7 +96,7 @@ function Score(id,where){
   }
   totals=0
   for (let i = 0; i < scores.length; i++){
-  totals+=parseInt(i);
+  totals+=parseInt(scores[i]);
 }
   console.log(totals);
 }
