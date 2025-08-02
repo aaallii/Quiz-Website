@@ -1,5 +1,5 @@
 {
   "1": "<h1>This is an abstract relationship quiz</h1><p style=\"top:0;\">Where you will see how well you can guess answers based on loose ends. Try it out.</p>",
   "head": "",
-  "body": "<button onclick=\"jvalue -= 1; loadPage();\" style=\"left:0;\">The page before</button><button onclick=\"jvalue += 1; loadPage();\">Next page</button>"
+  "body": "<button onclick=\"jvalue -= 1; loadPage();\" >The page before</button><button onclick=\"jvalue += 1; loadPage();\">Next page</button>"
 }
