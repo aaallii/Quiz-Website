@@ -1,18 +1,32 @@
 let jid = 0;
 let pjvalue = 0;
 let jvalue = 1;
-
+let preContent = "";  // Formerly head
+let postContent = ""; // Formerly body
+let mainContent = "";
 function loadPage() {
+  fetch("htmlwrappings.json")
+    .then(response => response.json())
+    .then(data => {
+      preContent = data["head"] || "";
+      postContent = data["body"] || "";
+      if (data[h+jvalue]) {
+        preContent += data[h+jvalue];
+      }else if(data[b+jvalue]){
+        postContent= data[h+jvalue]+postContent;
+      }
+      
   fetch("imgdata.json")
     .then(response => response.json())
     .then(data => {
       // Check if we're trying to go to a new page AND that data exists
       if (pjvalue !== jvalue && data[String((jvalue - 1) * 3 + 1)]) {
         loadPageb(); // Load page content
-      } else {
+      } else if(0<jvalue) {
+        loadPagec();
+      } else(){
         jvalue = pjvalue; // Revert if no data
-        console.log("No data available for this page. Staying on current page.");
-      }
+        console.log("No data available for this page. Staying on current page.");}
     });
 }
 
@@ -45,22 +59,8 @@ function loadPageb() {
   return fullForm;
 };
 
-  let preContent = "";  // Formerly head
-  let postContent = ""; // Formerly body
-  let mainContent = "";
 
-  fetch("htmlwrappings.json")
-    .then(response => response.json())
-    .then(data => {
-      preContent = data["head"] || "";
-      postContent = data["body"] || "";
-
-      if (data[String(jvalue)]) {
-        preContent += data[String(jvalue)];
-      }
-
-      return fetch("imgdata.json");
-    })
+  fetch("imgdata.json");
     .then(response => response.json())
     .then(data => {
       for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++) {
@@ -109,8 +109,14 @@ function Score(name,where){
   totals=0
   for (let i = 0; i < scores.length; i++){
   totals+=parseInt(scores[i]);
-}
-  console.log(totals);
+}console.log(totals);}
+
+
+
+function loadPagec(){
+      
+      document.body.innerHTML = preContent + mainContent + postContent;
+      pjvalue = jvalue;
 }
 loadPage();
 //load please
