@@ -5,15 +5,16 @@ let preContent = "";  // Formerly head
 let postContent = ""; // Formerly body
 let mainContent = "";
 function loadPage() {
+  mainContent = "";
   fetch("htmlwrappings.json")
     .then(response => response.json())
     .then(data => {
       preContent = data["head"] || "";
       postContent = data["body"] || "";
-      if (data[h+jvalue]) {
-        preContent += data[h+jvalue];
-      }else if(data[b+jvalue]){
-        postContent= data[h+jvalue]+postContent;
+      if (data['h'+jvalue]) {
+        preContent += data['h'+jvalue];
+      }else if(data['b'+jvalue]){
+        postContent= data['b'+jvalue]+postContent;
       }
       
   fetch("imgdata.json")
@@ -24,7 +25,7 @@ function loadPage() {
         loadPageb(); // Load page content
       } else if(0<jvalue) {
         loadPagec();
-      } else(){
+      } else{
         jvalue = pjvalue; // Revert if no data
         console.log("No data available for this page. Staying on current page.");}
     });
@@ -60,7 +61,7 @@ function loadPageb() {
 };
 
 
-  fetch("imgdata.json");
+  fetch("imgdata.json")
     .then(response => response.json())
     .then(data => {
       for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++) {
@@ -114,7 +115,6 @@ function Score(name,where){
 
 
 function loadPagec(){
-      
       document.body.innerHTML = preContent + mainContent + postContent;
       pjvalue = jvalue;
 }
