@@ -29,7 +29,7 @@ function loadPage() {
         jvalue = pjvalue; // Revert if no data
         console.log("No data available for this page. Staying on current page.");}
     });
-}
+}}
 
 function loadPageb() {
   function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5, nameNum) {
@@ -58,7 +58,7 @@ function loadPageb() {
 
   let fullForm = firststring + options.join('') + laststring;
   return fullForm;
-};
+  }
 
 
   fetch("imgdata.json")
@@ -111,7 +111,6 @@ function Score(name,where){
   for (let i = 0; i < scores.length; i++){
   totals+=parseInt(scores[i]);
 }console.log(totals);}
-
 
 
 function loadPagec(){
