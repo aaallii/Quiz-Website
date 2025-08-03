@@ -1,6 +1,7 @@
 let jid = 0;
 let pjvalue = 0;
 let jvalue = 1;
+let maxpage=4
 function loadPage() {
   fetch("htmlwrappings.json")
     .then(response => response.json())
@@ -20,7 +21,6 @@ function loadPage() {
       }
     });
 }
-
 function loadPageb() {
   function template(jid, jvalue1, jvalue2, jvalue3, jvalue4, jvalue5, nameNum) {
   let firststring = `<form id="b${nameNum}" onchange="Score('d${nameNum}',${nameNum})">
