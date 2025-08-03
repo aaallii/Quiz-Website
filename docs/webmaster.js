@@ -1,13 +1,18 @@
 let jid = 0;
 let pjvalue = 0;
 let jvalue = 1;
-
 function loadPage() {
-  fetch("imgdata.json")
+  fetch("htmlwrappings.json")
     .then(response => response.json())
     .then(data => {
+      let maxKey = 0;
+      for (let key in data) {
+      let numKey = parseInt(key, 10);
+      if (!isNaN(numKey) && numKey > maxKey) {
+          maxKey = numKey;}}
+      maxpage = maxKey;
       // Check if we're trying to go to a new page AND that data exists
-      if (pjvalue !== jvalue && data[String((jvalue - 1) * 3 + 1)]) {
+      if (pjvalue !== jvalue && data[String(jvalue)]) {
         loadPageb(); // Load page content
       } else {
         jvalue = pjvalue; // Revert if no data
@@ -63,11 +68,12 @@ function loadPageb() {
     })
     .then(response => response.json())
     .then(data => {
+      jid=(jvalue - 1) * 9;
       for (let i = (jvalue - 1) * 3 + 1; i < jvalue * 3 + 1; i++) {
         const pageData = data[String(i)];
 
         if (Array.isArray(pageData) && pageData.length >= 5) {
-          mainContent += template(
+          if(jvalue<maxpage){mainContent += template(
             jid,
             pageData[0],
             pageData[1],
@@ -77,7 +83,9 @@ function loadPageb() {
             i
           );
           jid += 3;
-        } else {
+        }} else if(jvalue===maxpage){
+          loadPagec()
+        }else {
           mainContent += `<p>No data found for page ${jvalue}.</p>`;
         }
       }
@@ -112,5 +120,7 @@ function Score(name,where){
 }
   console.log(totals);
 }
+function loadPagec(){
+};
 loadPage();
 //load please
