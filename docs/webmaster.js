@@ -10,7 +10,7 @@ function loadPage() {
       let numKey = parseInt(key, 10);
       if (!isNaN(numKey) && numKey > maxKey) {
           maxKey = numKey;}}
-      maxpage = maxKey+1;
+      maxpage = maxKey;
       // Check if we're trying to go to a new page AND that data exists
       if (pjvalue !== jvalue && data[String(jvalue)]) {
         loadPageb(); // Load page content
